@@ -1,9 +1,17 @@
-import mongoose from 'mongoose';
+import "dotenv/config"
+import { connect } from "mongoose"
+import { UserModel } from "../models/userModel"
 
-try {
-    mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.htfl5.mongodb.net/?retryWrites=true&w=majority`)
-} catch (error) {
-    console.log(error)
+export async function runDb() {
+    await connect(process.env.DB_URL!)
+
+    const user = new UserModel({
+        email: "aline@teste.com",
+        name: "Aline Avelino Rocha",
+        password: "pass123456"
+    })
+
+    await user.save()
+
+    console.log(user)
 }
-
-export const db = mongoose.connection

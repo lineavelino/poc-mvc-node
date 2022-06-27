@@ -1,17 +1,17 @@
-import { model, Schema } from "mongoose"
+import { model, Schema } from "mongoose";
 
 interface UserSchemaProps {
-    id: String,
-    name: String,
-    password: String,
-    email: String
+  id: String;
+  name: String;
+  password: String;
+  email: String;
 }
 
 const userSchema = new Schema<UserSchemaProps>({
-    id: String,
-    name: { type: String, required: true },
-    password: { type: String, required: true },
-    email: { type: String, required: true }
-})
+  id: String,
+  name: { type: String, required: true },
+  password: { type: String, required: true },
+  email: { type: String, required: true }
+});
 
-export const UserModel = model<UserSchemaProps>("User", userSchema)
+export const UserModel = model<UserSchemaProps>("User", userSchema);

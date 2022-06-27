@@ -1,15 +1,15 @@
-import express from 'express';
-import { runDb } from './services/connection';
+import express from "express";
+import { runDb } from "./services/connection";
 
-const app = express()
-const port = 8080
+const app = express();
+const port = 8080;
 
 app.get("/", (req, res) => {
-    res.send("Hello World")
-})
+  res.send("Hello World");
+});
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
-})
+  console.log(`Server is running on http://localhost:${port}`);
+});
 
-runDb().catch(err => console.log(err))
+runDb().catch((err) => console.log(err));

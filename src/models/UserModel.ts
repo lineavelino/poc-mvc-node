@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-interface UserSchemaProps {
+export interface UserSchemaProps {
   id: String;
   name: String;
   password: String;

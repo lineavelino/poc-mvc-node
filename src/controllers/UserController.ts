@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { UserModel } from "../models/UserModel";
 import { UserService } from "../services/UserService";
 
 class UserController {
@@ -10,6 +11,15 @@ class UserController {
     await user.save();
 
     return res.status(201).json({ data: user });
+  }
+
+  async listAllUsers(req: Request, res: Response) {
+    try {
+      const allUsers = await UserModel.find();
+      return res.status(200).json({ data: allUsers });
+    } catch (error) {
+      res.status(500).send({ message: `${error} - falha na busca.` });
+    }
   }
 }
 

@@ -18,7 +18,18 @@ class UserController {
       const allUsers = await UserModel.find();
       return res.status(200).json({ data: allUsers });
     } catch (error) {
-      res.status(500).send({ message: `${error} - falha na busca.` });
+      res.status(500).send({ message: `falha na busca - ${error}.` });
+    }
+  }
+
+  async deleteUser(req: Request, res: Response) {
+    try {
+      const { id } = req.body;
+      const user = await UserModel.findByIdAndDelete(id);
+
+      return res.status(200).json({ data: user });
+    } catch (error) {
+      res.status(404).send({ message: `falha na exclusão - ${error}.` });
     }
   }
 }
